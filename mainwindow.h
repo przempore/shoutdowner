@@ -30,9 +30,10 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    const int m_maxHourValue;
-    const int m_maxMinuteValue;
-    QSize m_applicationSize;
+    const int m_maxHourValue;       //< max number of posibily hours to count
+    const int m_maxMinuteValue;     //< max number of posibily minutes to count
+    const QSize m_applicationSize;  //< max size of application
+
     boost::shared_ptr< SD::Logic::CTimeController > m_pTimeControl;
 };
 

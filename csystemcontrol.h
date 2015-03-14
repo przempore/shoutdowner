@@ -13,6 +13,8 @@ namespace SD
             ~CSystemControl();
 
         public:
+            /// \brief Start counting time of suspend
+            /// \param [in] time; time to count
             void StartCounting( int time );
         };
     }

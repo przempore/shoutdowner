@@ -20,6 +20,7 @@ namespace SD
 
         void CTimeController::SetTime( int hour, int minutes )
         {
+            assert( hour < 0 || minutes < 0 );
             m_suspendTime = hour * 60 + minutes;
             m_suspendTime *= 60; // suspend time is counting in seconds
         }

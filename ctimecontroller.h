@@ -1,5 +1,6 @@
 #ifndef CTIMECONTROLLER_H
 #define CTIMECONTROLLER_H
+
 #include <boost/shared_ptr.hpp>
 #include "csystemcontrol.h"
 
@@ -14,6 +15,7 @@ namespace SD
             ~CTimeController();
 
         public:
+            /// \brief option of shutdown command
             enum ShutdownOption
             {
                 eRestart,
