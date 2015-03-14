@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>521</width>
-    <height>527</height>
+    <width>476</width>
+    <height>476</height>
    </rect>
   </property>
   <property name="baseSize">
@@ -72,6 +72,9 @@
             <pointsize>46</pointsize>
            </font>
           </property>
+          <property name="minimum">
+           <number>-1</number>
+          </property>
          </widget>
         </item>
        </layout>
@@ -104,6 +107,9 @@
            <font>
             <pointsize>30</pointsize>
            </font>
+          </property>
+          <property name="minimum">
+           <number>-1</number>
           </property>
          </widget>
         </item>
@@ -161,7 +167,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>521</width>
+     <width>476</width>
      <height>20</height>
     </rect>
    </property>

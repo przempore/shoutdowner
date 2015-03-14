@@ -16,10 +16,13 @@ LIBS += "-L%BOOST_ROOT%/stage/lib"
 SOURCES += main.cpp\
         mainwindow.cpp \
     ctimecontroller.cpp \
-    csystemcontrol.cpp
+    csystemcontrol.cpp \
+    ccounter.cpp
 
 HEADERS  += mainwindow.h \
     ctimecontroller.h \
-    csystemcontrol.h
+    csystemcontrol.h \
+    ccounter.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    ccounter.ui

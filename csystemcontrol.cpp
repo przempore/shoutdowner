@@ -12,10 +12,9 @@ namespace SD
         CSystemControl::~CSystemControl()
         {}
 
-        void CSystemControl::StartCounting(int time)
+        void CSystemControl::StartCounting( int time )
         {
-           system( "timeout /t " + time );
-           std::cout << "Koniec!!!\n";
+           system( "shutdown /s" );
         }
     }
 }
