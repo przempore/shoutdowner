@@ -1,3 +1,5 @@
+#include <qmessagebox.h>
+#include "ccounter.h"
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
@@ -8,12 +10,13 @@ MainWindow::MainWindow(QWidget *parent) :
                     ui(new Ui::MainWindow),
                     m_maxHourValue( 27 ),
                     m_maxMinuteValue( 60 ),
-                    m_applicationSize( 450, 380 )
+                    m_applicationSize( 450, 380 ),
+                    m_shutdownOption( CCounter::eNull )
 {
     ui->setupUi(this);
     setMaximumSize( m_applicationSize );
     setMinimumSize( m_applicationSize );
-    m_pTimeControl.reset( new CTimeController() );
+    ui->shutdown_radioButton->setChecked( true );
 }
 
 MainWindow::~MainWindow()
@@ -47,21 +50,43 @@ void MainWindow::on_minutes_spinBox_valueChanged(int arg1)
 
 void MainWindow::on_start_button_clicked()
 {
-    m_pTimeControl->SetTime( ui->hours_spinBox->value(), ui->minutes_spinBox->value() );
+    if( ui->hours_spinBox->value() <= 0
+        && ui->minutes_spinBox->value() <= 0 )
+    {
+       QMessageBox msgBox;
+       msgBox.setText( QString( "Cannot count zero time!!!!!" ) );
+       msgBox.exec();
+       return;
+    }
+    SetTime( QTime( ui->hours_spinBox->value(), ui->minutes_spinBox->value() ) );
+    CCounter cCounter( &m_time, m_shutdownOption, this );
+    cCounter.setModal( true );
+    cCounter.exec();
 }
 
 void MainWindow::on_restart_radioButton_toggled(bool checked)
 {
    if( checked )
    {
-       m_pTimeControl->SetOption( CTimeController::eRestart );
+        m_shutdownOption = CCounter::eRestart;
    }
 }
 
 void MainWindow::on_shutdown_radioButton_clicked(bool checked)
 {
-   if( checked )
+   if( checked
+       || ui->shutdown_radioButton->isChecked() )
    {
-       m_pTimeControl->SetOption( CTimeController::eShutdown );
+        m_shutdownOption = CCounter::eShutdown;
    }
 }
+QTime MainWindow::GetTime() const
+{
+    return m_time;
+}
+
+void MainWindow::SetTime(const QTime &time)
+{
+    m_time = time;
+}
+

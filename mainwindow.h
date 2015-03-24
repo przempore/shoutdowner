@@ -2,8 +2,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QTime>
 #include <boost/shared_ptr.hpp>
-#include "ctimecontroller.h"
+#include <ccounter.h>
 
 namespace Ui {
 class MainWindow;
@@ -16,6 +17,9 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+
+    QTime GetTime() const;
+    void SetTime(const QTime &time);
 
 private slots:
     void on_hours_spinBox_valueChanged(int arg1);
@@ -33,8 +37,10 @@ private:
     const int m_maxHourValue;       //< max number of posibily hours to count
     const int m_maxMinuteValue;     //< max number of posibily minutes to count
     const QSize m_applicationSize;  //< max size of application
+    CCounter::ShutdownOption m_shutdownOption;
 
-    boost::shared_ptr< SD::Logic::CTimeController > m_pTimeControl;
+    QTime m_time;
+
 };
 
 #endif // MAINWINDOW_H

@@ -2,6 +2,7 @@
 #define CTIMECONTROLLER_H
 
 #include <boost/shared_ptr.hpp>
+#include <QTime>
 #include "csystemcontrol.h"
 
 namespace SD
@@ -36,12 +37,18 @@ namespace SD
             /// \brief Start counting
             void StartCounting();
 
+            QTime GetSuspendTime(); // const;
+            void SetSetSuspendTime( int suspendTime );
+
         private:
             ShutdownOption m_shutdownOption;    // option od shutdown command
             int m_suspendTime;  // time of suspend before shutdown command
 
         private:
             boost::shared_ptr< CSystemControl > m_pSystemControl;
+            QTime m_time;
+            int m_hours;
+            int m_minutes;
         };
     }
 }
