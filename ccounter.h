@@ -2,8 +2,10 @@
 #define CCOUNTER_H
 
 #include <boost/shared_ptr.hpp>
+#include <boost/scoped_ptr.hpp>
 #include <QDialog>
 #include <QProcess>
+#include <QElapsedTimer>
 #include <string>
 #include "ctimecontroller.h"
 
@@ -20,6 +22,8 @@ public:
     {
         eRestart,
         eShutdown,
+        eHibernate,
+        eSuspend,
 
         eNull
     };
@@ -47,6 +51,7 @@ private:
     Ui::CCounter *ui;
     ShutdownOption m_shutdownOption;    // option od shutdown command
     boost::shared_ptr< QTimer > m_timer;
+    boost::scoped_ptr< QElapsedTimer > m_pElapsedTimer;
     boost::shared_ptr< QProcess > m_exitProcess;
     const QSize m_windowSize;  //< max size of application
     boost::shared_ptr< QTime > m_time;

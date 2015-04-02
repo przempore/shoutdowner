@@ -37,14 +37,10 @@ CCounter::CCounter( QTime* time, ShutdownOption SHOption, QWidget *parent ) :
              this, SLOT( TimeoutSlot() ) );
     m_timer->start();
 
-    std::string countedTime = std::to_string( ComputeTime() );
     m_exitProcess.reset( new QProcess( this ) );
-    QStringList lista;
-//    lista << "/T";
-    lista << "5";
-    m_exitProcess->start( "timeout /t 5" );
-    connect( m_exitProcess.get(), SIGNAL( finished( int ) ),
-             this, SLOT( OnProcessExit(int) ) );
+    m_pElapsedTimer.reset( new QElapsedTimer( this ) );
+
+    std::string countedTime = std::to_string( ComputeTime() );
 
     ui->Cancel_Button->setText( "Cancel" );
 }
@@ -56,16 +52,14 @@ CCounter::~CCounter()
 
 void CCounter::TimeoutSlot()
 {
-   if( ManageTime( m_time.get() ) )
-   {
-//       system( ManageSystem().c_str() );
+   if( ManageTime( m_time.get() ) ) {
+       system( ManageSystem().c_str() );
        disconnect( m_timer.get(), SIGNAL( timeout() ),
              this, SLOT( TimeoutSlot() ) );
    }
    DrawTime();
 
-   m_timer->start( m_timerInterval );
-}
+   m_timer->start( m_timerInterval ); }
 
 bool CCounter::ManageTime( int& hour, int& minute, int& second )
 {
@@ -141,7 +135,7 @@ void CCounter::OnProcessExit( int exit )
 
     std::cout << exit;
     QMessageBox msgBox;
-    msgBox.setText( QString( "dupa!!!" ) );
+    msgBox.setText( QString( ( std::to_string( exit ) ).c_str() ) );
     msgBox.exec();
 //   m_exitProcess->start( "shutdown", QStringList() << ManageSystem().c_str() );
 }
