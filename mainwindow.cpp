@@ -14,6 +14,7 @@ MainWindow::MainWindow(QWidget *parent) :
                     m_shutdownOption( CCounter::eNull )
 {
     ui->setupUi(this);
+    SetUiTexts();
     setMaximumSize( m_applicationSize );
     setMinimumSize( m_applicationSize );
     ui->shutdown_radioButton->setChecked( true );
@@ -80,6 +81,15 @@ void MainWindow::on_shutdown_radioButton_clicked(bool checked)
         m_shutdownOption = CCounter::eShutdown;
    }
 }
+
+void MainWindow::SetUiTexts()
+{
+    ui->restart_radioButton->setText( "Uruchom ponownie." );
+    ui->shutdown_radioButton->setText( "Zamknij." );
+    ui->suspend_radioButton->setText( "Wstrzymaj." );
+    ui->hibernate_radioButton->setText( "Hibernate." );
+}
+
 QTime MainWindow::GetTime() const
 {
     return m_time;

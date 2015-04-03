@@ -38,7 +38,7 @@ CCounter::CCounter( QTime* time, ShutdownOption SHOption, QWidget *parent ) :
     m_timer->start();
 
     m_exitProcess.reset( new QProcess( this ) );
-    m_pElapsedTimer.reset( new QElapsedTimer( this ) );
+//    m_pElapsedTimer.reset( new QElapsedTimer( this ) );
 
     std::string countedTime = std::to_string( ComputeTime() );
 

@@ -32,6 +32,9 @@ private slots:
 
     void on_shutdown_radioButton_clicked(bool checked);
 
+protected:
+    void SetUiTexts();
+
 private:
     Ui::MainWindow *ui;
     const int m_maxHourValue;       //< max number of posibily hours to count
