@@ -3,7 +3,6 @@
 
 #include <boost/shared_ptr.hpp>
 #include <QTime>
-#include "csystemcontrol.h"
 
 namespace SD
 {

@@ -1,13 +1,9 @@
 #ifndef CCOUNTER_H
 #define CCOUNTER_H
 
-#include <boost/shared_ptr.hpp>
 #include <boost/scoped_ptr.hpp>
 #include <QDialog>
-#include <QProcess>
-#include <QElapsedTimer>
 #include <string>
-#include "ctimecontroller.h"
 
 namespace Ui {
 class CCounter;
@@ -38,8 +34,6 @@ private slots:
 
     void on_Cancel_Button_clicked();
 
-    void OnProcessExit( int exit );
-
 private:
     bool ManageTime( int& hour, int& minute, int& second );
     bool ManageTime( QTime* time );
@@ -50,15 +44,16 @@ private:
 private:
     Ui::CCounter *ui;
     ShutdownOption m_shutdownOption;    // option od shutdown command
-    boost::shared_ptr< QTimer > m_timer;
-//    boost::scoped_ptr< QElapsedTimer > m_pElapsedTimer;
-    boost::shared_ptr< QProcess > m_exitProcess;
+
+    boost::scoped_ptr< QTimer > m_timer;
+    boost::scoped_ptr< QTime > m_time;
+
     const QSize m_windowSize;  //< max size of application
-    boost::shared_ptr< QTime > m_time;
+    const int m_timerInterval;
+
     int m_hour;
     int m_minute;
     int m_second;
-    const int m_timerInterval;
 };
 
 #endif // CCOUNTER_H
