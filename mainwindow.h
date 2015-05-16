@@ -2,9 +2,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <QTime>
 #include <QFont>
 #include <QLabel>
+#include <QTime>
 #include <ccounter.h>
 
 namespace Ui {
@@ -16,7 +16,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit MainWindow( QWidget *parent = 0 );
+    explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
     QTime GetTime() const;
@@ -45,17 +45,17 @@ protected:
 private:
     Ui::MainWindow *ui;
 
-    const int m_maxHourValue;       //< max number of posibily hours to count
-    const int m_maxMinuteValue;     //< max number of posibily minutes to count
-    const QSize m_applicationSize;  //< max size of application
+    const int m_maxHourValue = 27;       //< max number of posibily hours to count
+    const int m_maxMinuteValue = 60;     //< max number of posibily minutes to count
+    const QSize m_applicationSize = QSize(450, 350);  //< max size of application
 
     CCounter::ShutdownOption m_shutdownOption;
 
     QTime m_time;
 
-    const int m_hourFontSize;
-    const int m_minutesFontSize;
-    const int m_titleFontSize;
+    const int m_hourFontSize = 28;
+    const int m_minutesFontSize = 18;
+    const int m_titleFontSize = 10;
 };
 
 #endif // MAINWINDOW_H
