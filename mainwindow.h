@@ -49,7 +49,7 @@ private:
     const int m_maxMinuteValue = 60;     //< max number of posibily minutes to count
     const QSize m_applicationSize = QSize(450, 350);  //< max size of application
 
-    CCounter::ShutdownOption m_shutdownOption;
+    CCounter::ShutdownOption m_shutdownOption = CCounter::eNull;
 
     QTime m_time;
 

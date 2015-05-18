@@ -44,6 +44,7 @@ void MainWindow::on_minutes_spinBox_valueChanged(int arg1)
     if( arg1 >= m_maxMinuteValue )
     {
        ui->minutes_spinBox->setValue( 0 );
+       ui->hours_spinBox->setValue(ui->hours_spinBox->value() + 1);
     }
     else if( arg1 < 0 )
     {
@@ -71,7 +72,7 @@ void MainWindow::on_restart_radioButton_toggled(bool checked)
 {
     if( checked )
     {
-//         m_shutdownOption = CCounter::eRestart;
+         m_shutdownOption = CCounter::eRestart;
     }
 
 }
@@ -81,7 +82,7 @@ void MainWindow::on_shutdown_radioButton_clicked(bool checked)
     if( checked
         || ui->shutdown_radioButton->isChecked() )
     {
-//         m_shutdownOption = CCounter::eShutdown;
+         m_shutdownOption = CCounter::eShutdown;
     }
 
 }
@@ -91,7 +92,7 @@ void MainWindow::on_suspend_radioButton_clicked(bool checked)
     if( checked
         || ui->suspend_radioButton->isChecked() )
     {
-//         m_shutdownOption = CCounter::eSuspend;
+         m_shutdownOption = CCounter::eSuspend;
     }
 
 }
@@ -101,7 +102,7 @@ void MainWindow::on_hibernate_radioButton_clicked(bool checked)
     if( checked
         || ui->suspend_radioButton->isChecked() )
     {
-//         m_shutdownOption = CCounter::eSuspend;
+         m_shutdownOption = CCounter::eHibernate;
     }
 
 }
