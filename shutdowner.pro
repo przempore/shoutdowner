@@ -22,3 +22,8 @@ HEADERS  += mainwindow.h \
 
 FORMS    += mainwindow.ui \
     ccounter.ui
+
+win32 {
+    INCLUDEPATH += C:/Biblioteki/boost_1_57_0
+    LIBS += -LC:/Biblioteki/boost_1_57_0/lib
+}
