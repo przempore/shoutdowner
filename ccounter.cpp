@@ -69,8 +69,7 @@ bool CCounter::ManageTime( int& hour, int& minute, int& second )
        return true;
    }
    else
-   {
-       --second;
+   { --second;
        if( second < 0 )
        {
            second = 59;

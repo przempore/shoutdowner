@@ -136,3 +136,14 @@ QFont MainWindow::SetLabelFontSize(QLabel *label, int size)
     font.setPointSize( size );
     return font;
 }
+
+void MainWindow::on_action_Exit_triggered()
+{
+    QApplication::quit();
+}
+
+void MainWindow::on_action_Reset_triggered()
+{
+    ui->hours_spinBox->setValue(0);
+    ui->minutes_spinBox->setValue(0);
+}

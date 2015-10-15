@@ -9,12 +9,13 @@ namespace Ui {
 class CCounter;
 }
 
+
 class CCounter : public QDialog
 {
     Q_OBJECT
 public:
     /// \brief option of shutdown command
-    enum ShutdownOption
+    enum  ShutdownOption
     {
         eRestart,
         eShutdown,

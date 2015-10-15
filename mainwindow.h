@@ -37,6 +37,10 @@ private slots:
 
     void on_hibernate_radioButton_clicked(bool checked);
 
+    void on_action_Exit_triggered();
+
+    void on_action_Reset_triggered();
+
 protected:
     void SetUiTexts();
     void SetWindowSize();
